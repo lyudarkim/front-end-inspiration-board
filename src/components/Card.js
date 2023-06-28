@@ -1,13 +1,28 @@
 import React from 'react';
+import './Card.css';
+import PropTypes from 'prop-types';
 
-const Card = () => {
+const Card = (props) => {
 
-  return (
+    // const toggleDelete = () => {
+    //     props.updateDelete(props.id)
+    //   }    
+
+    return (
     <section>
-      Hello, I'm a Card!
+      <div>
+          {props.message}
+      </div>
+      <button
+        onClick={}
+        >delete</button>
     </section>
 
-  );
+);
+};
+
+Card.propTypes = {
+  
 };
 
 export default Card;
