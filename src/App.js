@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import BoardList from './components/BoardList';
+import CardList from './components/CardList';
+import Card from './components/Card';
+import Board from './components/Board';
+import CardForm from './components/CardForm';
+import BoardForm from './components/BoardForm';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="App">
+      <Board />
+      <Card />
+      <BoardList />
+      <CardList />
+      <BoardForm />
+      <CardForm />
+    </section>
   );
 }
 
