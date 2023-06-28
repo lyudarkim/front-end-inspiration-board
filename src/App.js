@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import BoardList from './components/BoardList';
 import CardList from './components/CardList';
@@ -9,6 +9,8 @@ import BoardForm from './components/BoardForm';
 import './App.css';
 
 function App() {
+
+  const CARDS_URL = 'https://inspiration-board-api-uv33.onrender.com/cards';
 
   const [cards, setCards] = useState([]);
 
@@ -31,6 +33,32 @@ function App() {
   //     console.log('could not delete card', error, error.response)
   //   });
   // };
+
+  
+  const getCards = () => {
+    axios
+    .get(CARDS_URL)
+    .then((response) => {
+      const newCards = response.data.map((card) => {
+        return {
+          'message': card.message,
+          'board_id': card.board_id
+        };
+      });
+      setCards(newCards);
+    })
+    .catch((error) => {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    });
+  };
+  
+
+  useEffect(() => {
+    getCards();
+  }, []);
+
+  console.log(cards);
 
   return (
     <section className="App">
