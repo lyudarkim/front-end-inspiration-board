@@ -1,4 +1,5 @@
 import React from 'react';
+import './BoardList.css';
 
 const BoardList = () => {
     return (

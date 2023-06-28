@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import './Board.css';
+
 
 const Board = () => {
   return (
@@ -7,6 +10,10 @@ const Board = () => {
     </section>
 
   );
+};
+
+Board.propTypes = {
+
 };
 
 export default Board;
