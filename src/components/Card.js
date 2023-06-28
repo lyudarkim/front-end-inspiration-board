@@ -14,7 +14,7 @@ const Card = (props) => {
           {props.message}
       </div>
       <button
-        onClick={}
+        // onClick={}
         >delete</button>
     </section>
 

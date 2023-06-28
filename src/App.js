@@ -63,9 +63,8 @@ function App() {
   return (
     <section className="App">
       <Board/>
-      <Card />
       <BoardList />
-      <CardList />
+      <CardList cards={cards}/>
       <BoardForm />
       <CardForm />
     </section>
