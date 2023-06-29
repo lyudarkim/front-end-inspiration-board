@@ -18,12 +18,12 @@ function App() {
 
     .then( (response) => {
 
-      const filteredUpdatedTasks = cards.filter(function (cards) {
+      const updatedCards = cards.filter(function (cards) {
         return cards.card_id !== cardId;
       });
 
       console.log('success!', response.data);
-      setCards(filteredUpdatedTasks);
+      setCards(updatedCards);
     })
     .catch( (error) => {
       console.log('could not delete card', error, error.response)
