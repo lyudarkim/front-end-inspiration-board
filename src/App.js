@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import BoardList from './components/BoardList';
 import CardList from './components/CardList';
-import Card from './components/Card';
 import Board from './components/Board';
 import CardForm from './components/CardForm';
 import BoardForm from './components/BoardForm';
@@ -11,28 +10,27 @@ import './App.css';
 function App() {
 
   const CARDS_URL = 'https://inspiration-board-api-uv33.onrender.com/cards';
+  const BOARDS_URL = 'https://inspiration-board-api-uv33.onrender.com/boards';
 
   const [cards, setCards] = useState([]);
+  const [boards, setBoards] = useState([]);
 
-  // const updateDelete = (cardId) => {
-  //   axios.delete(`https://inspiration-board-api-uv33.onrender.com/${cardId}`)
-  //   .then( (response) => {
-  //     const updatedTasks = cards.map(card => {
-  //       if (card.id !== cardId) {
-  //         return {...card};
-  //     }
-  //   });
-  //   const filteredUpdatedTasks = updatedTasks.filter(function (element) {
-  //     return element !== undefined;
-  //   });
+  const updateDelete = (cardId) => {
+    axios.delete(`${CARDS_URL}/${cardId}`)
 
-  //   console.log('sucess!', response.data);
-  //   setCards(filteredUpdatedTasks);
-  //   })
-  //   .catch( (error) => {
-  //     console.log('could not delete card', error, error.response)
-  //   });
-  // };
+    .then( (response) => {
+
+      const updatedCards = cards.filter(function (cards) {
+        return cards.card_id !== cardId;
+      });
+
+      console.log('success!', response.data);
+      setCards(updatedCards);
+    })
+    .catch( (error) => {
+      console.log('could not delete card', error, error.response)
+    });
+  };
 
   
   const getCards = () => {
@@ -42,7 +40,8 @@ function App() {
       const newCards = response.data.map((card) => {
         return {
           'message': card.message,
-          'board_id': card.board_id
+          'board_id': card.board_id,
+          'card_id': card.card_id
         };
       });
       setCards(newCards);
@@ -53,18 +52,36 @@ function App() {
     });
   };
   
+  const getBoards = () => {
+    axios
+    .get(BOARDS_URL)
+    .then((response) => {
+      const newBoards = response.data.map((board) => {
+        return {
+          'title': board.title,
+          'board_id': board.board_id,
+          'owner': board.owner
+        };
+      });
+      setBoards(newBoards);
+    })
+    .catch((error) => {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    });
+  };
 
   useEffect(() => {
     getCards();
+    getBoards();
   }, []);
 
   console.log(cards);
 
   return (
     <section className="App">
-      <Board/>
-      <BoardList />
-      <CardList cards={cards}/>
+      <BoardList boards={boards}/>
+      <CardList cards={cards} updateDelete={updateDelete}/>
       <BoardForm />
       <CardForm />
     </section>

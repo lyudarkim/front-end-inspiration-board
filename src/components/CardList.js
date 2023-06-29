@@ -31,6 +31,6 @@ CardList.propTypes = {
         })
     ).isRequired,
     updateDelete: PropTypes.func,
-    };
+};
 
 export default CardList;

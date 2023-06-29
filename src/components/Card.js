@@ -4,17 +4,16 @@ import PropTypes from 'prop-types';
 
 const Card = (props) => {
 
-    // const toggleDelete = () => {
-    //     props.updateDelete(props.id)
-    //   }    
+    const toggleDelete = () => {
+        props.updateDelete(props.card_id)
+    }    
 
     return (
     <section>
       <div>
           {props.message}
       </div>
-      <button
-        // onClick={}
+      <button onClick={toggleDelete}
         >delete</button>
     </section>
 
@@ -22,7 +21,8 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-  
+  message: PropTypes.string.isRequired,
+  updateDelete: PropTypes.func.isRequired
 };
 
 export default Card;
