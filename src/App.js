@@ -15,6 +15,14 @@ function App() {
   const [cards, setCards] = useState([]);
   const [boards, setBoards] = useState([]);
 
+  // const createCard = (newCard) => {
+  //   axios.post(`${CARDS_URL}`, newCard)
+  //   .then( () => {getCards()})
+  //   .catch( (error) => {
+  //     console.log('error', error);
+  //   });
+  // };
+
   const updateDelete = (cardId) => {
     axios.delete(`${CARDS_URL}/${cardId}`)
 
