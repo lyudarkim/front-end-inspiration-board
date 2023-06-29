@@ -10,8 +10,10 @@ import './App.css';
 function App() {
 
   const CARDS_URL = 'https://inspiration-board-api-uv33.onrender.com/cards';
+  const BOARDS_URL = 'https://inspiration-board-api-uv33.onrender.com/boards';
 
   const [cards, setCards] = useState([]);
+  const [boards, setBoards] = useState([]);
 
   const updateDelete = (cardId) => {
     axios.delete(`${CARDS_URL}/${cardId}`)
@@ -50,17 +52,35 @@ function App() {
     });
   };
   
+  const getBoards = () => {
+    axios
+    .get(BOARDS_URL)
+    .then((response) => {
+      const newBoards = response.data.map((board) => {
+        return {
+          'title': board.title,
+          'board_id': board.board_id,
+          'owner': board.owner
+        };
+      });
+      setBoards(newBoards);
+    })
+    .catch((error) => {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    });
+  };
 
   useEffect(() => {
     getCards();
+    getBoards();
   }, []);
 
   console.log(cards);
 
   return (
     <section className="App">
-      <Board/>
-      <BoardList />
+      <BoardList boards={boards}/>
       <CardList cards={cards} updateDelete={updateDelete}/>
       <BoardForm />
       <CardForm />
