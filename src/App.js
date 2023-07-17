@@ -15,13 +15,13 @@ function App() {
   const [cards, setCards] = useState([]);
   const [boards, setBoards] = useState([]);
 
-  // const createCard = (newCard) => {
-  //   axios.post(`${CARDS_URL}`, newCard)
-  //   .then( () => {getCards()})
-  //   .catch( (error) => {
-  //     console.log('error', error);
-  //   });
-  // };
+  const createCard = (newCard) => {
+    axios.post(`${CARDS_URL}`, newCard)
+    .then( () => {getCards()})
+    .catch( (error) => {
+      console.log('error', error);
+    });
+  };
 
   const updateDelete = (cardId) => {
     axios.delete(`${CARDS_URL}/${cardId}`)
@@ -91,7 +91,7 @@ function App() {
       <BoardList boards={boards}/>
       <CardList cards={cards} updateDelete={updateDelete}/>
       <BoardForm />
-      <CardForm />
+      <CardForm createCard={createCard}/>
     </section>
   );
 }
