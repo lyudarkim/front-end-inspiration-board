@@ -36,15 +36,18 @@ const BoardForm = (props) => {
                 <input 
                 id="boardTitle"
                 name="title"
+                value={boardFormData.title}
                 onChange={anInputChanged}
                 ></input>
                 <label htmlFor="boardOwner">Owner's Name:</label>
                 <input 
                 id="boardOwner"
                 name="owner"
+                value={boardFormData.owner}
                 onChange={anInputChanged}
                 ></input> 
                 <input 
+                disabled={ !boardFormData.title || !boardFormData.owner }
                 type="submit"
                 ></input> 
             </form>
