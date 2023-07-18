@@ -14,7 +14,7 @@ const Board = (props) => {
 };
 
 Board.propTypes = {
-  board_id: PropTypes.number.isRequired,
+  board_id: PropTypes.number,
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired
 };
