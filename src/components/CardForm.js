@@ -21,6 +21,12 @@ const CardForm = (props) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
 
+        if (cardFormData.message.length > 40) {
+            // Display an error message 
+            alert('The message should be 40 characters or less.');
+            return;
+        }
+        
         props.createCard(cardFormData);
 
         setCardFormData(INITIAL_FORM_DATA);
@@ -38,7 +44,7 @@ const CardForm = (props) => {
                 value={cardFormData.message}
                 onChange={anInputChanged}
                 ></input>
-                <input type="submit" value="add a card!"></input> 
+                <input disabled={!cardFormData.message} type="submit" value="add a card!"></input> 
             </form>
 
         </section>
