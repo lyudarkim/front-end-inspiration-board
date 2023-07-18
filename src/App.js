@@ -23,6 +23,14 @@ function App() {
     });
   };
 
+  const createBoard = (newBoard) => {
+    axios.post(`${BOARDS_URL}`, newBoard)
+    .then( () => {getBoards()})
+    .catch( (error) => {
+      console.log('error', error);
+    });
+  };
+
   const updateDelete = (cardId) => {
     axios.delete(`${CARDS_URL}/${cardId}`)
 
