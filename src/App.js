@@ -14,10 +14,22 @@ function App() {
 
   const [cards, setCards] = useState([]);
   const [boards, setBoards] = useState([]);
+  const [currentBoard, setCurrentBoard] = useState([]);
 
   const createCard = (newCard) => {
-    axios.post(`${CARDS_URL}`, newCard)
-    .then( (response) => {getCards()})
+    const updatedNewCard = {
+      ...newCard,
+      "board_id": 8,
+      "card_id": null
+    };
+
+    axios.post(`${CARDS_URL}`, updatedNewCard)
+    .then( (response) => {
+  
+      const newCardsArray = [...cards];
+      newCardsArray.push(updatedNewCard);
+      setCards(newCardsArray);
+    })
     .catch( (error) => {
       console.log('error', error);
     });
