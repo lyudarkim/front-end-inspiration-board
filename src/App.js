@@ -17,15 +17,27 @@ function App() {
 
   const createCard = (newCard) => {
     axios.post(`${CARDS_URL}`, newCard)
-    .then( () => {getCards()})
+    .then( (response) => {getCards()})
     .catch( (error) => {
       console.log('error', error);
     });
   };
 
   const createBoard = (newBoard) => {
-    axios.post(`${BOARDS_URL}`, newBoard)
-    .then( () => {getBoards()})
+
+    const updatedNewBoard = {
+      ...newBoard,
+      "board_id": null
+    };
+
+    // There's a lag for board_id updating in the state
+    axios.post(`${BOARDS_URL}`, updatedNewBoard)
+    .then( (response) => {
+  
+      const newBoardsArray = [...boards];
+      newBoardsArray.push(updatedNewBoard);
+      setBoards(newBoardsArray);
+    })
     .catch( (error) => {
       console.log('error', error);
     });
@@ -98,7 +110,7 @@ function App() {
     <section className="App">
       <BoardList boards={boards}/>
       <CardList cards={cards} updateDelete={updateDelete}/>
-      <BoardForm />
+      <BoardForm createBoard={createBoard}/>
       <CardForm createCard={createCard}/>
     </section>
   );
