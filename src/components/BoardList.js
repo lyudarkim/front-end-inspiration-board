@@ -15,6 +15,7 @@ const BoardList = (props) => {
                     board_id={board.board_id}
                     title={board.title}
                     owner={board.owner}
+                    currentBoardID={props.currentBoardID}
                 />
             );
         })

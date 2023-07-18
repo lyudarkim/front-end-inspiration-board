@@ -16,6 +16,15 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState([]);
 
+  const currentBoardID = (boardId, boardOwner, boardTitle) => {
+    const updatedBoard = {
+    "board_id": boardId,
+    "title": boardTitle,
+    "owner": boardOwner
+    };
+    setCurrentBoard(updatedBoard);
+  };
+
   const createCard = (newCard) => {
     const updatedNewCard = {
       ...newCard,
@@ -116,11 +125,9 @@ function App() {
     getBoards();
   }, []);
 
-  console.log(cards);
-
   return (
     <section className="App">
-      <BoardList boards={boards}/>
+      <BoardList boards={boards} currentBoardID={currentBoardID}/>
       <CardList cards={cards} updateDelete={updateDelete}/>
       <BoardForm createBoard={createBoard}/>
       <CardForm createCard={createCard}/>

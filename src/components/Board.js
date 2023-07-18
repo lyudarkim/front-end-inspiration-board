@@ -4,10 +4,14 @@ import './Board.css';
 
 
 const Board = (props) => {
+
+  const handleClick = () => {
+    props.currentBoardID(props.board_id, props.owner, props.title)
+  };
+
   return (
-    <section>
+    <section onClick={handleClick}>
       {props.title}
-      {/* {props.owner} */}
     </section>
 
   );
