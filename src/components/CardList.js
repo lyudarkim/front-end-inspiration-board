@@ -25,7 +25,7 @@ const CardList = (props) => {
 CardList.propTypes = {
     cards: PropTypes.arrayOf(
       PropTypes.shape({
-        card_id: PropTypes.number.isRequired,
+        card_id: PropTypes.number,
         board_id: PropTypes.number.isRequired,
         message: PropTypes.string.isRequired
         })
