@@ -58,4 +58,8 @@ const BoardForm = (props) => {
 
 };
 
+BoardForm.propTypes = {
+    creatBoard: PropTypes.func
+};
+
 export default BoardForm;
