@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 .App {
   font-family: 'Arial', sans-serif;
   height: 100vh;
@@ -16,8 +18,17 @@
 
 body {
   background: linear-gradient(45deg, #d9e4f5, #f5e3e6);
-
+  font-family: 'Nunito', sans-serif;
 }
 
+@font-face {
+  font-family: 'Mochi';
+  src: local('Mochi'), url('./assets/fonts/mochi/Mochi.otf') format('truetype'); 
+}
 
-
+.kawaiiText {
+  font-family: 'Mochi', sans-serif;
+  color: purple;
+  font-size: 50px;
+  text-align: center;
+}

@@ -35,7 +35,7 @@ const CardForm = (props) => {
 
     return (
         <div className="new-card-form__container">
-          <h2 className="new-card-form-title">Create a New Card</h2>
+          <h2 className="new-card-form-title">Create a New Card 💌</h2>
           <form className="new-card-form__form" onSubmit={onFormSubmit}>
             <label htmlFor="cardMessage" className="new-card-form-message">
               Message:
@@ -44,14 +44,14 @@ const CardForm = (props) => {
               id="cardMessage"
               name="message"
               type="text"
-              className="new-card-form-textarea"
+              className="new-card-form-input"
               value={cardFormData.message}
               onChange={anInputChanged}
             />
             <input
               disabled={!cardFormData.message}
               type="submit"
-              value="add a card!"
+              value="Add a card!"
               className="new-card-form-submit-btn"
             />
           </form>

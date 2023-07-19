@@ -123,12 +123,12 @@ function App() {
 
   return (
     <div>
-      <h1>Inspiration Board</h1>
+      <h1 className="kawaiiText"> ✨ Inspiration Board ✨ </h1>
       <section className="App">
-        <BoardList boards={boards} currentBoardID={currentBoardID} getCards={getCards}/>
-        <CardList cards={cards} updateDelete={updateDelete}/>
+        <BoardList boards={boards} currentBoardID={currentBoardID} getCards={getCards} />
         <BoardForm createBoard={createBoard}/>
         <CardForm createCard={createCard}/>
+        <CardList cards={cards} updateDelete={updateDelete}/>
       </section>
     </div>
   );

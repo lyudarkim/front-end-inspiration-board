@@ -25,7 +25,7 @@ const BoardList = (props) => {
 
     return (
         <div>
-          <h2>Boards</h2>
+          <h2>Boards 🪄</h2>
           <ol className="boards_list">{getBoardListJSX(boards)}</ol>
         </div>
       );

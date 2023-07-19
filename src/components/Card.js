@@ -11,7 +11,7 @@ const Card = (props) => {
     return (
       <section className="card">
         <div className="card_message">{props.message}</div>
-        <button onClick={toggleDelete}>delete</button>
+        <button onClick={toggleDelete}> 🗑 delete</button>
       </section>
     );
 
