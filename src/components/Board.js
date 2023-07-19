@@ -11,7 +11,7 @@ const Board = (props) => {
   };
 
   return (
-    <section onClick={handleClick}>
+    <section className="Board" onClick={handleClick}>
       {props.title}
     </section>
 

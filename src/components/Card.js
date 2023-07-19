@@ -9,15 +9,12 @@ const Card = (props) => {
     }    
 
     return (
-    <section>
-      <div>
-          {props.message}
-      </div>
-      <button onClick={toggleDelete}
-        >delete</button>
-    </section>
+      <section className="card">
+        <div className="card_message">{props.message}</div>
+        <button onClick={toggleDelete}>delete</button>
+      </section>
+    );
 
-);
 };
 
 Card.propTypes = {

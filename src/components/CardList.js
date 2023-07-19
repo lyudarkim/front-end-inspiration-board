@@ -19,7 +19,8 @@ const CardList = (props) => {
         );
       });
     };
-    return <ul className="cards__list no-bullet">{getCardListJSX(cards)}</ul>;
+
+    return <div className="card_list">{getCardListJSX(cards)}</div>;
 };
 
 CardList.propTypes = {

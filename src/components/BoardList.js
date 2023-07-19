@@ -8,20 +8,27 @@ const BoardList = (props) => {
     const boards = props.boards;
 
     const getBoardListJSX = (boards) => {
-        return boards.map((board) => {
-            return (
-                <Board 
-                    key={board.board_id}
-                    board_id={board.board_id}
-                    title={board.title}
-                    owner={board.owner}
-                    currentBoardID={props.currentBoardID}
-                    getCards={props.getCards}
-                />
-            );
-        })
+      return boards.map((board) => {
+        return (
+          <li key={board.board_id}>
+            <Board
+              board_id={board.board_id}
+              title={board.title}
+              owner={board.owner}
+              currentBoardID={props.currentBoardID}
+              getCards={props.getCards}
+            />
+          </li>
+        );
+      });
     };
-    return <ol className='boards_list no-bullet'>{getBoardListJSX(boards)}</ol>;
+
+    return (
+        <div>
+          <h2>Boards</h2>
+          <ol className="boards_list">{getBoardListJSX(boards)}</ol>
+        </div>
+      );
 };
 
 BoardList.propTypes = {

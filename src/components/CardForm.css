@@ -1,0 +1,40 @@
+.new-card-form__container {
+    background-color: #e0ece4;
+    border: 2px solid #b7e4c7;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+  }
+  
+  .new-card-form-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .new-card-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .new-card-form-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #d8e2dc;
+  }
+  
+  .new-card-form-submit-btn {
+    cursor: pointer;
+    background-color: #ffadad;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .new-card-form-submit-btn:hover {
+    background-color: #ff6b6b;
+  }
+  

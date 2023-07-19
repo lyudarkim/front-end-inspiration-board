@@ -122,12 +122,15 @@ function App() {
   }, []);
 
   return (
-    <section className="App">
-      <BoardList boards={boards} currentBoardID={currentBoardID} getCards={getCards}/>
-      <CardList cards={cards} updateDelete={updateDelete}/>
-      <BoardForm createBoard={createBoard}/>
-      <CardForm createCard={createCard}/>
-    </section>
+    <div>
+      <h1>Inspiration Board</h1>
+      <section className="App">
+        <BoardList boards={boards} currentBoardID={currentBoardID} getCards={getCards}/>
+        <CardList cards={cards} updateDelete={updateDelete}/>
+        <BoardForm createBoard={createBoard}/>
+        <CardForm createCard={createCard}/>
+      </section>
+    </div>
   );
 }
 

@@ -29,33 +29,37 @@ const BoardForm = (props) => {
     };
 
     return (
-        <section>
-            <h2>Create a New Board</h2>
-            <form onSubmit={onFormSubmit}>
-                <label htmlFor="boardTitle">Title:</label>
-                <input 
-                id="boardTitle"
-                name="title"
-                value={boardFormData.title}
-                onChange={anInputChanged}
-                ></input>
-                <label htmlFor="boardOwner">Owner's Name:</label>
-                <input 
-                id="boardOwner"
-                name="owner"
-                value={boardFormData.owner}
-                onChange={anInputChanged}
-                ></input> 
-                <input 
-                disabled={ !boardFormData.title || !boardFormData.owner }
-                type="submit"
-                ></input> 
-            </form>
-
-        </section>
-    );
-
-
+        <div className="new-board-form__container">
+          <h2 className="new-board-form-title">Create a New Board</h2>
+          <form className="new-board-form__form" onSubmit={onFormSubmit}>
+            <label htmlFor="boardTitle" className="new-board-form-title">
+              Title:
+            </label>
+            <input
+              id="boardTitle"
+              name="title"
+              className="new-board-form-input"
+              value={boardFormData.title}
+              onChange={anInputChanged}
+            />
+            <label htmlFor="boardOwner" className="new-board-form-owner">
+              Owner's Name:
+            </label>
+            <input
+              id="boardOwner"
+              name="owner"
+              className="new-board-form-input"
+              value={boardFormData.owner}
+              onChange={anInputChanged}
+            />
+            <input
+              disabled={!boardFormData.title || !boardFormData.owner}
+              type="submit"
+              className="new-board-form-submit-btn"
+            />
+          </form>
+        </div>
+      );
 };
 
 BoardForm.propTypes = {

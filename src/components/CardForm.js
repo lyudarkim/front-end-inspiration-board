@@ -32,23 +32,31 @@ const CardForm = (props) => {
         setCardFormData(INITIAL_FORM_DATA);
     };
 
-    return (
-        <section>
-            <h2>Create a New Card</h2>
-            <form onSubmit={onFormSubmit}>
-                <label htmlFor="cardMessage">Message: </label>
-                <input
-                id="cardMessage"
-                name="message"
-                type="text"
-                value={cardFormData.message}
-                onChange={anInputChanged}
-                ></input>
-                <input disabled={!cardFormData.message} type="submit" value="add a card!"></input> 
-            </form>
 
-        </section>
-    );
+    return (
+        <div className="new-card-form__container">
+          <h2 className="new-card-form-title">Create a New Card</h2>
+          <form className="new-card-form__form" onSubmit={onFormSubmit}>
+            <label htmlFor="cardMessage" className="new-card-form-message">
+              Message:
+            </label>
+            <input
+              id="cardMessage"
+              name="message"
+              type="text"
+              className="new-card-form-textarea"
+              value={cardFormData.message}
+              onChange={anInputChanged}
+            />
+            <input
+              disabled={!cardFormData.message}
+              type="submit"
+              value="add a card!"
+              className="new-card-form-submit-btn"
+            />
+          </form>
+        </div>
+      );
 
 };
 
