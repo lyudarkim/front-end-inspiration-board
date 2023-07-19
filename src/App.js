@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import BoardList from './components/BoardList';
 import CardList from './components/CardList';
-import Board from './components/Board';
 import CardForm from './components/CardForm';
 import BoardForm from './components/BoardForm';
 import './App.css';
@@ -28,7 +27,7 @@ function App() {
   const createCard = (newCard) => {
     const updatedNewCard = {
       ...newCard,
-      "board_id": 8,
+      "board_id": currentBoard.board_id,
       "card_id": null
     };
 
@@ -51,7 +50,6 @@ function App() {
       "board_id": null
     };
 
-    // There's a lag for board_id updating in the state
     axios.post(`${BOARDS_URL}`, updatedNewBoard)
     .then( (response) => {
   
@@ -81,12 +79,11 @@ function App() {
     });
   };
 
-  
-  const getCards = () => {
+  const getCards = (boardId) => {
     axios
-    .get(CARDS_URL)
+    .get(`${BOARDS_URL}/${boardId}/cards`)
     .then((response) => {
-      const newCards = response.data.map((card) => {
+      const newCards = response.data.cards.map((card) => {
         return {
           'message': card.message,
           'board_id': card.board_id,
@@ -121,13 +118,12 @@ function App() {
   };
 
   useEffect(() => {
-    getCards();
     getBoards();
   }, []);
 
   return (
     <section className="App">
-      <BoardList boards={boards} currentBoardID={currentBoardID}/>
+      <BoardList boards={boards} currentBoardID={currentBoardID} getCards={getCards}/>
       <CardList cards={cards} updateDelete={updateDelete}/>
       <BoardForm createBoard={createBoard}/>
       <CardForm createCard={createCard}/>

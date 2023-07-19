@@ -1,6 +1,6 @@
 import React from 'react';
-import Board from './Board';
 import PropTypes from 'prop-types';
+import Board from './Board';
 import './BoardList.css';
 
 const BoardList = (props) => {
@@ -16,6 +16,7 @@ const BoardList = (props) => {
                     title={board.title}
                     owner={board.owner}
                     currentBoardID={props.currentBoardID}
+                    getCards={props.getCards}
                 />
             );
         })
@@ -30,7 +31,7 @@ BoardList.propTypes = {
           title: PropTypes.string.isRequired,
           owner: PropTypes.string.isRequired
           })
-      ).isRequired
+    ).isRequired
 };
 
 export default BoardList;

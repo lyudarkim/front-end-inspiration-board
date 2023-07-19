@@ -6,7 +6,8 @@ import './Board.css';
 const Board = (props) => {
 
   const handleClick = () => {
-    props.currentBoardID(props.board_id, props.owner, props.title)
+    props.currentBoardID(props.board_id, props.owner, props.title);
+    props.getCards(props.board_id);
   };
 
   return (
